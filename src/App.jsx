@@ -1,7 +1,8 @@
-import "./App.css"
-import {useEffect, useState} from "react"
+import React,{useEffect, useState} from "react"
 import Favorites from "./components/Favorites";
 import Playlists from "./components/Playlists";
+import "./App.css"
+
 
 
 

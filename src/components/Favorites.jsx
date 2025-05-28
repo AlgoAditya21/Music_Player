@@ -2,7 +2,7 @@ import React from 'react';
 
 const Favorites = ({ favorites, removeFavorites }) => {
     return(
-        <div classname="container mt-4">
+        <div className="container mt-4">
             <h3>Liked Songs</h3>
             <div className="row">
                 {favorites.length===0 && <p>No liked songs yet.</p>}
