@@ -1,7 +1,10 @@
-import React,{useEffect, useState} from "react"
-import Favorites from "./components/Favorites";
-import Playlists from "./components/Playlists";
+import React,{useContext, useEffect, useState} from "react"
 import "./App.css"
+import Card from "./components/Card";
+import CreatePlaylist from "./components/CreatePlaylist";
+import { initializePlaylist } from "./initialize";
+import Navbar from "./components/Navbar";
+import { MusicContext } from "./Context";
 
 
 
@@ -18,48 +21,7 @@ function App() {
     setIsLoading(false)
   }
 
-  // Favorites state to local mai daala hai maine
-  const[favorites,setFavorites]=useState(()=>{
-    return JSON.parse(localStorage.getItem("favorites")) || [];
-  })
-  useEffect(()=>{
-    localStorage.setItem("favorites",JSON.stringify(favorites));
-  },[favorites]);
-  const addToFavorites=(track)=>{
-    if(!favorites.some((song)=>song.id===track.id)){
-      setFavorites([...favorites,track])
-    }
-  }
-  const removeFavorites=(id)=>{
-    setFavorites(favorites.filter((song)=>song.id!==id));
-  }
-
-  //playlist
-  const[playlists,setPlaylists]=useState(()=>{
-    return JSON.parse(localStorage.getItem("playlists")) || {};
-  });
-  useEffect(()=>{
-    localStorage.setItem("playlists",JSON.stringify(playlists));
-  },[playlists]);
-  const addToPlaylist=(name)=>{
-    if(!playlists[name]){
-      setPlaylists({ ...playlists,[name]:[]});
-    }
-  };
-  const addSongToPlaylist=(name,track)=>{
-    if (!playlists[name]?.some((song)=>song.id===track.id)){
-      setPlaylists({
-        ...playlists,
-        [name]:[...(playlists[name] || []),track],
-      });
-    }
-  };
-  const removePlaylist=(name)=>{
-    const updated={...playlists};
-    delete updated[name];
-    setPlaylists(updated);
-  };
-
+  
 
 
   return (
@@ -98,9 +60,7 @@ function App() {
                       <p className="cars-text">Release date: {ele.album.release_date}</p>
                       <audio src={ele.preview_url} controls style={{width:'100%'}}></audio>
 
-                      {/* like and add playlist button */}
-                      <button onClick={()=>addToFavorites(ele)} className="btn btn-outline-danger btn-sm mt-2 me-2">❤️ LIKE</button>
-                      <button onClick={()=>{const name=prompt("Enter playlist name:");if (name)addSongToPlaylist(name,ele);}} className="btn btn-outline-primary btn-sm mt-2">➕ Add to Playlist</button>
+                      
                       </div>
                   </div>
               </div>
@@ -108,9 +68,7 @@ function App() {
           }
         </div>
        </div>
-
-       <Favorites favorites={favorites} removeFavorites={removeFavorites}/>
-       <Playlists playlists={playlists} addSongToPlaylist={addToPlaylist} removePlaylist={removePlaylist}/>
+      
     </>
   )
 }
