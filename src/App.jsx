@@ -1,11 +1,5 @@
-import React,{useContext, useEffect, useState} from "react"
+import React,{useState} from "react"
 import "./App.css"
-import Card from "./components/Card";
-import CreatePlaylist from "./components/CreatePlaylist";
-import { initializePlaylist } from "./initialize";
-import Navbar from "./components/Navbar";
-import { MusicContext } from "./Context";
-
 
 
 
@@ -28,7 +22,7 @@ function App() {
     <>
       <nav className="navbar navbar-dark navbar-expand-lg bg-dark">
       <div className="container-fluid">
-      <a className="navbar-brand" href="#">Parth-ify</a>
+      <a className="navbar-brand" href="#"><span className="parth">Parth</span><span className="ify">-ify</span></a>
       <div className="collapse navbar-collapse d-flex justify-content-center" id="navbarSupportedContent">
           <input value={keywoard} onChange={(event)=>{setkeywoard(event.target.value)}} className="form-control me-2 w-75" type="search"placeholder="Search" aria-label="Search"/>
         <button onClick={getTracks} className="btn btn-outline-success">Search</button>
