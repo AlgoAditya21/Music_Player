@@ -140,8 +140,8 @@ function App() {
       <div className="modal fade position-absolute" id="exampleModal" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
         <CreatePlaylist />
       </div>
-            <footer style={{ marginTop: "40px", padding: "16px 0",textAlign:"center",fontSize: "1.15rem",color: "#7c4dff",letterSpacing:"0.08em",fontWeight:600,opacity:0.9}}>
-        Made with <span style={{color: "#ff4081", fontSize: "1.3em"}}>♥</span> by <span style={{color: "#40c9ff"}}>AlgoAditya</span>
+            <footer style={{marginTop:"40px", padding: "16px 0",textAlign:"center",fontSize: "1.15rem",color: "#7c4dff",letterSpacing:"0.08em",fontWeight:600,opacity:0.9}}>
+        Made with <span style={{color:"#ff4081", fontSize: "1.3em"}}>♥</span> by <span style={{color: "#40c9ff"}}>@AlgoAditya21</span>
       </footer>
     </>
   );
